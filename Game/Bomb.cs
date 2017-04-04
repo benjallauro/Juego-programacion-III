@@ -48,9 +48,9 @@ namespace Game
                 Console.SetCursorPosition(x, y);
                 Console.WriteLine("X");
                 //TEMPORAL
-                y--;
-                if (y <= 0)
-                    y = 25;
+                //y--;
+                //if (y <= 0)
+                //   y = 25;
             }
         }
     }
