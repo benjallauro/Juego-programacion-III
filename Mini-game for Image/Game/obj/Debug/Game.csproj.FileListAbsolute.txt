@@ -10,3 +10,15 @@ E:\Segundo año\Programacion III\Mini-game for Image\Game\obj\Debug\Game.pdb
 E:\Segundo año\Programacion III\Mini-game for Image\Game\bin\Debug\Game.exe
 E:\Segundo año\Programacion III\Mini-game for Image\Game\bin\Debug\Game.pdb
 E:\Segundo año\Programacion III\Mini-game for Image\Game\obj\Debug\Game.csprojResolveAssemblyReference.cache
+D:\Segundo año\Programacion III\Mini-game for Image\Game\bin\Debug\Game.exe.config
+D:\Segundo año\Programacion III\Mini-game for Image\Game\obj\Debug\Game.exe
+D:\Segundo año\Programacion III\Mini-game for Image\Game\obj\Debug\Game.pdb
+D:\Segundo año\Programacion III\Mini-game for Image\Game\bin\Debug\Game.exe
+D:\Segundo año\Programacion III\Mini-game for Image\Game\bin\Debug\Game.pdb
+D:\Segundo año\Programacion III\Mini-game for Image\Game\obj\Debug\Game.csprojResolveAssemblyReference.cache
+C:\Users\822\Desktop\Juego-programacion-III\Game\bin\Debug\Game.exe.config
+C:\Users\822\Desktop\Juego-programacion-III\Game\obj\Debug\Game.exe
+C:\Users\822\Desktop\Juego-programacion-III\Game\obj\Debug\Game.pdb
+C:\Users\822\Desktop\Juego-programacion-III\Mini-game for Image\Game\bin\Debug\Game.exe.config
+C:\Users\822\Desktop\Juego-programacion-III\Mini-game for Image\Game\obj\Debug\Game.exe
+C:\Users\822\Desktop\Juego-programacion-III\Mini-game for Image\Game\obj\Debug\Game.pdb
