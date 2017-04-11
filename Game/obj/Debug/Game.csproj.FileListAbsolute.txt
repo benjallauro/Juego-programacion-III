@@ -19,3 +19,9 @@ D:\Segundo año\Programacion III\Mini-game for Image\Game\obj\Debug\Game.csprojR
 C:\Users\Benjamin\Desktop\Facultad\Segundo año\Programacion III\Juego-programacion-III\Game\bin\Debug\Game.exe.config
 C:\Users\Benjamin\Desktop\Facultad\Segundo año\Programacion III\Juego-programacion-III\Game\obj\Debug\Game.exe
 C:\Users\Benjamin\Desktop\Facultad\Segundo año\Programacion III\Juego-programacion-III\Game\obj\Debug\Game.pdb
+C:\Users\822\Desktop\Juego-programacion-III\Game\bin\Debug\Game.exe.config
+C:\Users\822\Desktop\Juego-programacion-III\Game\obj\Debug\Game.exe
+C:\Users\822\Desktop\Juego-programacion-III\Game\obj\Debug\Game.pdb
+C:\Users\822\Desktop\Juego-programacion-III\Game\bin\Debug\Game.exe
+C:\Users\822\Desktop\Juego-programacion-III\Game\bin\Debug\Game.pdb
+C:\Users\822\Desktop\Juego-programacion-III\Game\obj\Debug\Game.csprojResolveAssemblyReference.cache

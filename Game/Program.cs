@@ -14,6 +14,7 @@ namespace Game
             Menu theMenu = new Menu();
             if(theMenu.MoveAndChoose() == true)
             {
+                Score theScore = new Game.Score();
                 Console.BackgroundColor = ConsoleColor.Green;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Random rand = new Random();
@@ -51,6 +52,10 @@ namespace Game
                         if (badGuys[i].searchAndKill(zero.getX(), zero.getY()))
                             zero.death();
                     }
+                    theScore.scoreUp();
+                    if (theScore.getScoreNumber() > theScore.getHighScore())
+                        theScore.setHighScore(theScore.getScoreNumber());
+                    theScore.Draw();
                     System.Threading.Thread.Sleep(50);
                 }
                 Console.SetCursorPosition(35, 12);
