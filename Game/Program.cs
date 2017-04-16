@@ -35,11 +35,14 @@ namespace Game
             }
             else
             {
-                playerPosData = File.OpenRead("PlayerPosData.txt");
-                where = (Position)formatter.Deserialize(playerPosData);
+                using (playerPosData = File.OpenRead("PlayerPosData.txt"))
+                {
+                    where = (Position)formatter.Deserialize(playerPosData);
+                }
             }
+            playerPosData.Close();
             Menu theMenu = new Menu();
-            if(theMenu.MoveAndChoose() == true)
+            if (theMenu.MoveAndChoose() == true)
             {
                 Score theScore = new Game.Score();
                 Console.BackgroundColor = ConsoleColor.Green;
@@ -65,9 +68,9 @@ namespace Game
                         ConsoleKeyInfo controls = Console.ReadKey();
                         zero.Moverse(controls);
                     }
-                
-                 for (int i = 0; i < mines.Length; i++)
-                    { 
+
+                    for (int i = 0; i < mines.Length; i++)
+                    {
                         mines[i].Draw();
                         if (mines[i].Sense(zero.getX(), zero.getY()))
                             zero.death();
@@ -93,7 +96,10 @@ namespace Game
                 //data.Close();
                 where.x = zero.getX();
                 where.y = zero.getY();
-                formatter.Serialize(playerPosData, where);
+                using (playerPosData = File.OpenWrite("PlayerPosData.txt"))
+                {
+                    formatter.Serialize(playerPosData, where); // it stops here and says "it can't be modified" the second time
+                }
                 playerPosData.Close();
                 Console.ReadKey();
             }
