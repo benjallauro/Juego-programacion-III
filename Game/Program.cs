@@ -3,14 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Game
 {
+    [Serializable]
+    struct Position
+    {
+        public int x;
+        public int y;
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            
+
+            //FileStream data = new FileStream("gameData.txt", FileMode.OpenOrCreate); //abre el codigo si existe. sino, lo crea.
+            //StreamWriter textSaver = new StreamWriter(data); //escritor de texto
+            //BinaryWriter scoreSaver = new BinaryWriter(data);
+            //BinaryFormatter formatter = new BinaryFormatter();
+            //FileStream playerPosData = new FileStream("PlayerPosData.txt", FileMode.OpenOrCreate);
+            Position where;
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream playerPosData;
+            if (!File.Exists("PlayerPosData.txt"))
+            {
+                playerPosData = File.Create("PlayerPosData.txt");
+                where.x = 50;
+                where.y = 20;
+            }
+            else
+            {
+                playerPosData = File.OpenRead("PlayerPosData.txt");
+                where = (Position)formatter.Deserialize(playerPosData);
+            }
             Menu theMenu = new Menu();
             if(theMenu.MoveAndChoose() == true)
             {
@@ -18,7 +45,7 @@ namespace Game
                 Console.BackgroundColor = ConsoleColor.Green;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Random rand = new Random();
-                Player zero = new Player(50, 20);
+                Player zero = new Player(where.x, where.y);
                 Enemy[] badGuys = new Enemy[20];
                 for (int i = 0; i < badGuys.Length; i++)
                     badGuys[i] = new Enemy(rand.Next(0, 79), rand.Next(0, 23));
@@ -60,6 +87,14 @@ namespace Game
                 }
                 Console.SetCursorPosition(35, 12);
                 Console.WriteLine("GAME OVER");
+                //textSaver.WriteLine("Acá va a ir el highscore. Testeando"); //Test de puntuacion
+                //scoreSaver.Write(theScore.getHighScore());
+                //textSaver.Close();
+                //data.Close();
+                where.x = zero.getX();
+                where.y = zero.getY();
+                formatter.Serialize(playerPosData, where);
+                playerPosData.Close();
                 Console.ReadKey();
             }
         }

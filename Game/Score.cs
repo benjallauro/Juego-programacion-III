@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Game
 {
@@ -32,6 +33,10 @@ namespace Game
         public void scoreUp()
         {
             scoreNumber++;
+        }
+        public bool getRecordBoolean()
+        {
+            return record;
         }
         public void Draw()
         {

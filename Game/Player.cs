@@ -25,6 +25,14 @@ namespace Game
         {
             return y;
         }
+        public void SetX(int _x)
+        {
+            x = _x;
+        }
+        public void setY(int _y)
+        {
+            y = _y;
+        }
         public void Moverse(ConsoleKeyInfo command)
         {
             if (command.Key == ConsoleKey.UpArrow && y > 0)
