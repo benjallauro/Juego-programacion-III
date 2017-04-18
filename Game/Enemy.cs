@@ -61,5 +61,18 @@ namespace Game
             Console.SetCursorPosition(x, y);
             Console.WriteLine("+");
         }
+        public int GetX()
+        {
+            return x;
+        }
+        public int GetY()
+        {
+            return y;
+        }
+        public void Respawn()
+        {
+            x = directionMarker.Next(0, 79);
+            y = directionMarker.Next(0, 23);
+        }
     }
 }

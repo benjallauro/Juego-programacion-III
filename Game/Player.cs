@@ -11,11 +11,14 @@ namespace Game
         private int x;
         private int y;
         private bool alive;
+        private int lives;
+        private const int maxLives = 3;
         public Player(int _x, int _y)
         {
             x = _x;
             y = _y;
             alive = true;
+            lives = 3;
         }
         public int getX()
         {
@@ -32,6 +35,15 @@ namespace Game
         public void setY(int _y)
         {
             y = _y;
+        }
+        public int GetLives()
+        {
+            return lives;
+        }
+        public void SetLives(int _lives)
+        {
+            if (_lives <= maxLives)
+                lives = _lives;
         }
         public void Moverse(ConsoleKeyInfo command)
         {
@@ -64,6 +76,11 @@ namespace Game
                 Console.SetCursorPosition(x, y);
                 Console.WriteLine("0");
             }
+        }
+        public void LoseLife()
+        {
+            if (lives > 0)
+                lives--;
         }
     }
 }

@@ -16,6 +16,8 @@ namespace Game
     }
     class Program
     {
+        static private Player zero;
+        static private List<Bullet> bullets;
         static void Main(string[] args)
         {
 
@@ -48,7 +50,11 @@ namespace Game
                 Console.BackgroundColor = ConsoleColor.Green;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Random rand = new Random();
-                Player zero = new Player(where.x, where.y);
+                zero = new Player(where.x, where.y);
+
+                bullets = new List<Bullet>();
+                ConsoleKey lastDirectionKey = new ConsoleKey(); //Sirve para que guarde la direccion en la que se esta moviendo el jugador
+
                 Enemy[] badGuys = new Enemy[20];
                 for (int i = 0; i < badGuys.Length; i++)
                     badGuys[i] = new Enemy(rand.Next(0, 79), rand.Next(0, 23));
@@ -67,8 +73,22 @@ namespace Game
                     {
                         ConsoleKeyInfo controls = Console.ReadKey();
                         zero.Moverse(controls);
+                        if (controls.Key == ConsoleKey.UpArrow || controls.Key == ConsoleKey.DownArrow || controls.Key == ConsoleKey.LeftArrow || controls.Key == ConsoleKey.RightArrow)
+                            lastDirectionKey = controls.Key;
+                        else if (controls.Key == ConsoleKey.Spacebar)
+                            bullets.Add(new Bullet(zero.getX(), zero.getY(), lastDirectionKey));
                     }
-
+                    for (int i = 0; i < badGuys.Length; i++)
+                    {
+                        for (int j = 0; j < bullets.Count; j++)
+                        {
+                            if (badGuys[i].GetX() == bullets[j].GetPosX() && badGuys[i].GetY() == bullets[j].GetPosY())
+                            {
+                                badGuys[i].Respawn();
+                                bullets.RemoveAt(j); 
+                            }
+                        }
+                    }
                     for (int i = 0; i < mines.Length; i++)
                     {
                         mines[i].Draw();
@@ -80,12 +100,21 @@ namespace Game
                         badGuys[i].draw();
                         badGuys[i].Move();
                         if (badGuys[i].searchAndKill(zero.getX(), zero.getY()))
-                            zero.death();
+                        {
+                            zero.LoseLife();
+                            if (zero.GetLives() == 0)
+                                zero.death();
+                        } 
+                    }
+                    for (int i = 0; i < bullets.Count; i++)
+                    {
+                        bullets[i].Update();
                     }
                     theScore.scoreUp();
                     if (theScore.getScoreNumber() > theScore.getHighScore())
                         theScore.setHighScore(theScore.getScoreNumber());
                     theScore.Draw();
+                    DrawLives();
                     System.Threading.Thread.Sleep(50);
                 }
                 Console.SetCursorPosition(35, 12);
@@ -102,6 +131,14 @@ namespace Game
                 }
                 playerPosData.Close();
                 Console.ReadKey();
+            }
+        }
+        static public void DrawLives()
+        { 
+            for (int i = 0; i < zero.GetLives(); i++)
+            {
+                Console.SetCursorPosition(i, 1);
+                Console.WriteLine("♥");
             }
         }
     }
