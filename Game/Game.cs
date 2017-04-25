@@ -23,7 +23,7 @@ namespace Game
         {
 
         }
-        public void Run()
+        public void Run(string weather)
         {
             Position where;
             BinaryFormatter formatter = new BinaryFormatter();
@@ -58,7 +58,18 @@ namespace Game
                     scoreDataReader.Close();
                 }
             }*/
-            Console.BackgroundColor = ConsoleColor.Green;
+            switch(weather)
+            {
+                case "Cloudy":
+                    Console.BackgroundColor = ConsoleColor.Gray;
+                    break;
+                case "Sunny":
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    break;
+                default:
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    break;
+            }
             Console.ForegroundColor = ConsoleColor.Red;
             Random rand = new Random();
             zero = new Player(where.x, where.y);

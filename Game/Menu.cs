@@ -33,7 +33,7 @@ namespace Game
             {
                 textData = File.OpenRead("TextData.txt");
                 StreamReader textReader = new StreamReader(textData);
-                Console.SetCursorPosition(30, 0);
+                Console.SetCursorPosition(0, 0);
                 Console.WriteLine(textReader.ReadLine());
                 textReader.Close();
             }
