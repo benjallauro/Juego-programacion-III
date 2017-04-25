@@ -31,3 +31,9 @@ C:\Users\Benja\Desktop\Facultad\Segundo año\Programacion III\Juego-programacion
 C:\Users\Benja\Desktop\Facultad\Segundo año\Programacion III\Juego-programacion-III\Game\bin\Debug\Game.exe
 C:\Users\Benja\Desktop\Facultad\Segundo año\Programacion III\Juego-programacion-III\Game\bin\Debug\Game.pdb
 C:\Users\Benja\Desktop\Facultad\Segundo año\Programacion III\Juego-programacion-III\Game\obj\Debug\Game.csprojResolveAssemblyReference.cache
+C:\Users\def\Desktop\Juego-programacion-III\Game\bin\Debug\Game.exe.config
+C:\Users\def\Desktop\Juego-programacion-III\Game\obj\Debug\Game.exe
+C:\Users\def\Desktop\Juego-programacion-III\Game\obj\Debug\Game.pdb
+C:\Users\def\Desktop\Juego-programacion-III\Game\bin\Debug\Game.exe
+C:\Users\def\Desktop\Juego-programacion-III\Game\bin\Debug\Game.pdb
+C:\Users\def\Desktop\Juego-programacion-III\Game\obj\Debug\Game.csprojResolveAssemblyReference.cache

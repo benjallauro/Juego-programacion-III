@@ -44,8 +44,8 @@ namespace Game
             playerPosData.Close();
 
             Score theScore = new Score();
-            /*FileStream scoreData;
-            if (!File.Exists("HighScoreData.txt"))
+            //FileStream scoreData;
+            /*if (!File.Exists("HighScoreData.txt"))
             {
                 scoreData = File.Create("HighScoreData.txt");
             }
@@ -53,7 +53,9 @@ namespace Game
             {
                 using (scoreData = File.OpenRead("HighScoreData.txt"))
                 {
-                    where = (Position)formatter.Deserialize(scoreData);
+                    BinaryReader scoreDataReader = new BinaryReader(scoreData);
+                    int num2 = scoreDataReader.ReadInt32();
+                    scoreDataReader.Close();
                 }
             }*/
             Console.BackgroundColor = ConsoleColor.Green;
@@ -138,11 +140,12 @@ namespace Game
             {
                 formatter.Serialize(playerPosData, where); // it stops here and says "it can't be modified" the second time
             }
-            /*if(theScore.getRecordBoolean()) //Devuelve se se realizo un nuevo record
-                using (scoreData = File.OpenRead("HighScoreData.txt"))
-                {
-                    scoreFormatter.Serialize(scoreData);
-                }*/
+            if(theScore.getRecordBoolean()) //Devuelve se se realizo un nuevo record}
+            {
+                /*scoreData = File.OpenRead("HighScoreData.txt");
+                BinaryWriter scoreDataWriter = new BinaryWriter(scoreData);
+                scoreDataWriter.Write(theScore.getScoreNumber());*/
+            }
             playerPosData.Close();
 
             Console.ReadKey();
