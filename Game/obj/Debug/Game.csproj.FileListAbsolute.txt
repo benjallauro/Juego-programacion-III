@@ -5,3 +5,10 @@ C:\Users\Benjamin\Desktop\Facultad\Segundo año\Programacion III\Juego-programac
 C:\Users\Benjamin\Desktop\Facultad\Segundo año\Programacion III\Juego-programacion-III\Game\obj\Debug\Game.csprojResolveAssemblyReference.cache
 C:\Users\Benjamin\Desktop\Facultad\Segundo año\Programacion III\Juego-programacion-III\Game\obj\Debug\Game.exe
 C:\Users\Benjamin\Desktop\Facultad\Segundo año\Programacion III\Juego-programacion-III\Game\obj\Debug\Game.pdb
+C:\Users\822\Desktop\Juego-programacion-III\Game\bin\Debug\Game.exe.config
+C:\Users\822\Desktop\Juego-programacion-III\Game\obj\Debug\Game.exe
+C:\Users\822\Desktop\Juego-programacion-III\Game\obj\Debug\Game.pdb
+C:\Users\822\Desktop\Juego-programacion-III\Game\bin\Debug\Game.exe
+C:\Users\822\Desktop\Juego-programacion-III\Game\bin\Debug\Game.pdb
+C:\Users\822\Desktop\Juego-programacion-III\Game\bin\Debug\Newtonsoft.Json.dll
+C:\Users\822\Desktop\Juego-programacion-III\Game\obj\Debug\Game.csprojResolveAssemblyReference.cache

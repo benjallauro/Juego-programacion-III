@@ -58,11 +58,12 @@ namespace Game
         }
         private void LoadHighScore()
         {
-            if (File.Exists("highScore.txt"))
+            if (File.Exists("highScoreData.txt"))
             {
-                BinaryReader scoreReader = new BinaryReader(File.Open("highScoreData.bin", FileMode.Open));
-                Console.Write("HIGHSCORE: " + scoreReader.ReadInt32());
+                BinaryReader scoreReader = new BinaryReader(File.Open("highScoreData.txt", FileMode.Open));
                 highScore = scoreReader.ReadInt32();
+                Console.Write("HIGHSCORE: " + highScore);
+                
                 scoreReader.Close();
             }
         }
