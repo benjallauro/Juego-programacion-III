@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Net;
-using Newtonsoft.Json.Linq;
+//using System.Net;
+//using Newtonsoft.Json.Linq;
 
 namespace Game
 {
@@ -14,8 +14,10 @@ namespace Game
     {
         static void Main(string[] args)
         {
-            Menu theMenu = new Menu();
+            Weather theWeather = new Weather();
+            Menu theMenu = new Menu(theWeather.getWeatherText());
             Game theGame = new Game();
+            /*
             string weather = "default";
             try
             {
@@ -33,9 +35,10 @@ namespace Game
                 Console.SetCursorPosition(0, 1);
                 Console.WriteLine("We could not find the weather.");
             }
+            */
             while (theMenu.MoveAndChoose() == true)
             {
-                theGame.Run(weather);
+                theGame.Run(theWeather.getWeatherText());
                 Console.Clear();
                 Console.BackgroundColor = ConsoleColor.Black;
             }

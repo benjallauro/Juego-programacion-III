@@ -16,14 +16,15 @@ namespace Game
         public Score()
         {
             scoreNumber = 0;
+            LoadHighScore();
         }
         public int getHighScore()
         {
             return highScore;
         }
-        public void setHighScore(int score)
+        public void setHighScore()
         {
-            highScore = score;
+            highScore = scoreNumber;
             if (record == false)
                 record = true;
         }
@@ -38,6 +39,32 @@ namespace Game
         public bool getRecordBoolean()
         {
             return record;
+        }
+        public void SaveHighScore()
+        {
+            FileStream scoreData;
+            if (!File.Exists("highScoreData.txt"))
+            {
+                scoreData = new FileStream("highScoreData.txt", FileMode.Create);
+                scoreData.Close();
+                //scoreData = File.Create("highScoreData.txt");
+            }
+            //scoreData = File.OpenRead("highScoreData.txt");
+            BinaryWriter scoreWriter = new BinaryWriter(File.Open("highScoreData.txt", FileMode.Open));
+            //BinaryWriter scoreWriter = new BinaryWriter(scoreData);
+            scoreWriter.Write(scoreNumber);
+            scoreWriter.Close();
+            //scoreWriter.Close();
+        }
+        private void LoadHighScore()
+        {
+            if (File.Exists("highScore.txt"))
+            {
+                BinaryReader scoreReader = new BinaryReader(File.Open("highScoreData.bin", FileMode.Open));
+                Console.Write("HIGHSCORE: " + scoreReader.ReadInt32());
+                highScore = scoreReader.ReadInt32();
+                scoreReader.Close();
+            }
         }
         public void Draw()
         {

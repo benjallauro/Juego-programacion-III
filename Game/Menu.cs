@@ -13,8 +13,12 @@ namespace Game
         private int cursorY = 12;
         private bool chosen = false;
         FileStream textData;
-        public Menu()
+        Score MenuScore = new Score();
+        string welcomeText;
+        string weatherText; //It recived to be shown
+        public Menu(string _weatherText)
         {
+            weatherText = _weatherText;
         }
         public void CreateOrReadText()
         {
@@ -33,8 +37,7 @@ namespace Game
             {
                 textData = File.OpenRead("TextData.txt");
                 StreamReader textReader = new StreamReader(textData);
-                Console.SetCursorPosition(0, 0);
-                Console.WriteLine(textReader.ReadLine());
+                welcomeText = textReader.ReadLine();
                 textReader.Close();
             }
             textData.Close();
@@ -46,6 +49,12 @@ namespace Game
             Draw();
             while(chosen == false)
             {
+                Console.SetCursorPosition(0, 0);
+                Console.WriteLine(welcomeText);
+                Console.SetCursorPosition(0, 1);
+                Console.WriteLine(weatherText);
+                Console.SetCursorPosition(0, 2);
+                Console.WriteLine(MenuScore.getHighScore());
                 Console.SetCursorPosition(33, 9);
                 Console.WriteLine("CONSOLE MANIA");
                 Console.SetCursorPosition(35, 11);

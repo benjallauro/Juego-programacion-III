@@ -23,7 +23,7 @@ namespace Game
         {
 
         }
-        public void Run(string weather)
+        public int Run(string weather)
         {
             Position where;
             BinaryFormatter formatter = new BinaryFormatter();
@@ -44,20 +44,6 @@ namespace Game
             playerPosData.Close();
 
             Score theScore = new Score();
-            //FileStream scoreData;
-            /*if (!File.Exists("HighScoreData.txt"))
-            {
-                scoreData = File.Create("HighScoreData.txt");
-            }
-            else
-            {
-                using (scoreData = File.OpenRead("HighScoreData.txt"))
-                {
-                    BinaryReader scoreDataReader = new BinaryReader(scoreData);
-                    int num2 = scoreDataReader.ReadInt32();
-                    scoreDataReader.Close();
-                }
-            }*/
             switch(weather)
             {
                 case "Cloudy":
@@ -83,6 +69,9 @@ namespace Game
             Bomb[] mines = new Bomb[5];
             for (int i = 0; i < mines.Length; i++)
                 mines[i] = new Bomb(rand.Next(0, 79), rand.Next(0, 23));
+            Item[] coins = new Item[10];
+            for (int i = 0; i < coins.Length; i++)
+                coins[i] = new Item(rand.Next(0, 79), rand.Next(0, 23));
             Console.SetCursorPosition(35, 12);
             Console.WriteLine("GAME START!");
             zero.draw();
@@ -99,6 +88,8 @@ namespace Game
                         lastDirectionKey = controls.Key;
                     else if (controls.Key == ConsoleKey.Spacebar)
                         bullets.Add(new Bullet(zero.getX(), zero.getY(), lastDirectionKey));
+                    else if (controls.Key == ConsoleKey.Escape)
+                        return 0;
                 }
                 for (int i = 0; i < badGuys.Length; i++)
                 {
@@ -108,6 +99,7 @@ namespace Game
                         {
                             badGuys[i].Respawn();
                             bullets.RemoveAt(j);
+                            theScore.scoreUp();
                         }
                     }
                 }
@@ -132,19 +124,23 @@ namespace Game
                 {
                     bullets[i].Update();
                 }
-                theScore.scoreUp();
+                for(int i = 0; i < coins.Length; i++)
+                {
+                    coins[i].draw();
+                    if(coins[i].GetX() == zero.getX() && coins[i].GetY() == zero.getY())
+                    {
+                        coins[i].Respawn();
+                        theScore.scoreUp();
+                    }
+                }
                 if (theScore.getScoreNumber() > theScore.getHighScore())
-                    theScore.setHighScore(theScore.getScoreNumber());
+                    theScore.setHighScore();
                 theScore.Draw();
                 DrawLives();
                 System.Threading.Thread.Sleep(50);
             }
             Console.SetCursorPosition(35, 12);
             Console.WriteLine("GAME OVER");
-            //textSaver.WriteLine("Acá va a ir el highscore. Testeando"); //Test de puntuacion
-            //scoreSaver.Write(theScore.getHighScore());
-            //textSaver.Close();
-            //data.Close();
             where.x = zero.getX();
             where.y = zero.getY();
             using (playerPosData = File.OpenWrite("PlayerPosData.txt"))
@@ -156,10 +152,12 @@ namespace Game
                 /*scoreData = File.OpenRead("HighScoreData.txt");
                 BinaryWriter scoreDataWriter = new BinaryWriter(scoreData);
                 scoreDataWriter.Write(theScore.getScoreNumber());*/
+                theScore.SaveHighScore();
             }
             playerPosData.Close();
 
             Console.ReadKey();
+            return 0;
         }
 
         static public void DrawLives()
